@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_24"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/type2"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:background="@drawable/edittext_rounded_corners"
+                android:gravity="center"
+                android:text="شراء شنطه" />
+
+            <TextView
+                android:id="@+id/location2"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:background="@drawable/edittext_rounded_corners"
+                android:gravity="center"
+                android:text="مكان توصيلها" />
+
+            <TextView
+                android:id="@+id/price2"
+                android:layout_width="250dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:background="@drawable/edittext_rounded_corners"
+                android:gravity="center"
+                android:text="100.LE" />
+
+            <TextView
+                android:id="@+id/cost2"
+                android:layout_width="250dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:background="@drawable/edittext_rounded_corners"
+                android:gravity="center"
+                android:text="100.LE" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="نوع الخدمه :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:gravity="center"
+                android:text="مكان توصيلها :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:gravity="center"
+                android:text="سعر الاوردر :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:gravity="center"
+
+                android:text="قيمة الخدمة :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/layout_total2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout"
+        android:layout_alignEnd="@+id/layout"
+        android:layout_marginTop="@dimen/dimen_24"
+        android:background="@drawable/edittext_rounded_corners">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-8dp"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text="المجموع :"
+            android:id="@+id/totel_s"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/total2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="133dp"
+            android:layout_toStartOf="@+id/totel_s"
+            android:gravity="center"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text="200.LE"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_margin="@dimen/dimen_42"
+        android:id="@+id/aply_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:layout_below="@+id/layout_total"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:textColor="@color/white"
+        android:background="@drawable/button_bg_ok"
+        android:text="aplay" />
+</LinearLayout>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ui.SplashActivity">
+
+    <ImageView
+        android:layout_marginTop="120dp"
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/communication" />
+
+    <Button
+        android:layout_marginTop="80dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="add service"
+        android:id="@+id/add_service"
+        android:background="@drawable/bg_btn"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
+
+
+    <Button
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="get service"
+        android:layout_below="@+id/add_service"
+        android:id="@+id/get_service"
+        android:background="@drawable/bg_btn"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
+
+</RelativeLayout>

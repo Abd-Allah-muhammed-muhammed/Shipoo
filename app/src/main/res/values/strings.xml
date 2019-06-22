@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Mashaweer</string>
+    <string name="client_register_name_et">name</string>
+    <string name="client_register_mail_et">mail</string>
+    <string name="client_register_phone_et">phone</string>
+    <string name="client_register_home_et">address</string>
+    <string name="password">password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_second_home">SecondHomeActivity</string>
+</resources>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ui.SignUpActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_24"
+                android:layout_marginTop="@dimen/dimen_24"
+                android:layout_marginEnd="@dimen/dimen_24"
+                android:orientation="vertical">
+
+                <EditText
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_34"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/client_register_name_et"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/client_register_mail_et"
+                    android:inputType="textEmailAddress"
+                    />
+
+                <EditText
+                    android:inputType="phone"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_Phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/client_register_phone_et"
+                    />
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/dimen_42"-->
+                    <!--android:layout_marginTop="@dimen/dimen_24"-->
+                    <!--android:background="@drawable/edittext_rounded_corners">-->
+
+                    <!--<Spinner-->
+                        <!--android:id="@+id/Client_Register_Spn_City"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/dimen_42"-->
+                        <!--android:focusableInTouchMode="false"-->
+                        <!--android:layoutDirection="rtl"-->
+                        <!--android:visibility="visible" />-->
+                <!--</RelativeLayout>-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners">
+
+                    <Spinner
+                        android:id="@+id/Spn_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusableInTouchMode="true"
+                        android:layoutDirection="rtl"
+                        android:visibility="visible" />
+                </RelativeLayout>
+
+                <EditText
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/client_register_home_et"
+                    android:inputType="text"
+                    android:textAlignment="viewStart"
+
+                    />
+
+                <EditText
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textAlignment="viewStart"
+                    />
+
+                <EditText
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/ID_RePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:textAlignment="viewStart"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_8">
+
+                <Button
+                    android:id="@+id/btn_Register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dimen_24"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_24"
+                    android:layout_marginBottom="@dimen/dimen_24"
+                    android:background="@drawable/bg_btn"
+                    android:text="تسجيل"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

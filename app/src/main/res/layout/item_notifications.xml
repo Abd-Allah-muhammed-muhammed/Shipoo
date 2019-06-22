@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+
+        android:layout_marginEnd="@dimen/dimen_8"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="@drawable/text_bg_whit"
+        android:id="@+id/titel_noti"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:text="هناك طلب موافقه لطلبك "
+        android:gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_below="@+id/titel_noti"
+        android:orientation="horizontal"
+        android:id="@+id/layout_noti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/dont_agree"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="لا اوافق"
+            android:layout_margin="@dimen/dimen_8"
+            android:background="@drawable/button_bg_no"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/agree"
+            android:text="موافق"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dimen_8"
+            android:background="@drawable/button_bg_ok"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
