@@ -1,5 +1,6 @@
 package com.example.mashaweer.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.mashaweer.R;
@@ -111,9 +112,12 @@ public class SecondHomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.notificatin_nav2) {
+            Intent intent = new Intent(SecondHomeActivity.this,Notification2Activity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
+
+
 
         } else if (id == R.id.nav_tools) {
 
@@ -142,7 +146,7 @@ public class SecondHomeActivity extends AppCompatActivity
                     Service value = snapshot.getValue(Service.class);
                     listofDataService.add(value);
                     get_service_rv.setLayoutManager(new LinearLayoutManager(SecondHomeActivity.this));
-                    adapterGetService = new AdapterGetService(SecondHomeActivity.this ,listofDataService ,0 );
+                    adapterGetService = new AdapterGetService(SecondHomeActivity.this ,listofDataService ,0 , SecondHomeActivity.this);
                     get_service_rv.setAdapter(adapterGetService);
                     adapterGetService.notifyDataSetChanged();
 

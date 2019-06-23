@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,10 +43,10 @@ public class NotificationActivity extends AppCompatActivity {
 
          uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("service_accept");
+        Query query = FirebaseDatabase.getInstance().getReference().child("service_accept");
 
-        databaseReferance.addValueEventListener(new ValueEventListener() {
-            @Override
+        query.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @java.lang.Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -55,18 +56,14 @@ public class NotificationActivity extends AppCompatActivity {
 
                     if (uidV.equals(uid)){
 
-                        if (idItem.equals(value.getIdItem())){
 
-                            // the value is already in the notification
+                        listofDataService.add(value);
+                        get_infoService_rv.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));
+                        adapterNotificatios = new AdapterNotificatios(NotificationActivity.this ,listofDataService ,NotificationActivity.this);
+                        get_infoService_rv.setAdapter(adapterNotificatios);
+                        adapterNotificatios.notifyDataSetChanged();
 
 
-                        }else {
-                            listofDataService.add(value);
-                            get_infoService_rv.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));
-                            adapterNotificatios = new AdapterNotificatios(NotificationActivity.this ,listofDataService );
-                            get_infoService_rv.setAdapter(adapterNotificatios);
-                            adapterNotificatios.notifyDataSetChanged();
-                        }
 
 
                     }else {
@@ -75,15 +72,15 @@ public class NotificationActivity extends AppCompatActivity {
 
 
                 }
-
-
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            @java.lang.Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
 
     }
 }

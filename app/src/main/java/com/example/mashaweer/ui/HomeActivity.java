@@ -2,7 +2,6 @@ package com.example.mashaweer.ui;
 
 import android.Manifest;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,9 +11,7 @@ import com.example.mashaweer.adapter.AdapterGetService;
 import com.example.mashaweer.helper.SharedPreferencesManger;
 import com.example.mashaweer.model.Service;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -43,11 +40,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,30 +70,23 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        btnNotification = findViewById(R.id.notification_btn_home);
+        toolbarType =findViewById(R.id.toolbar_type_home);
+        my_services_rv = findViewById(R.id.my_services_rv);
+
+
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
-        my_services_rv = findViewById(R.id.my_services_rv);
+
         checkPermissions();
 
         token = FirebaseInstanceId.getInstance().getToken();
 
+         uid = SharedPreferencesManger.LoadStringData(HomeActivity.this, "uid");
 
+        toolbarType.setText("My Services");
 
         getMyservice();
-
-         uid = SharedPreferencesManger.LoadStringData(HomeActivity.this, "uid");
-        btnNotification = findViewById(R.id.notification_btn_home);
-        toolbarType =findViewById(R.id.toolbar_type_home);
-        toolbarType.setText("My Services");
-//
-//        puplish.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//            }
-//        });
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +116,7 @@ public class HomeActivity extends AppCompatActivity
 
 
         Query query = FirebaseDatabase.getInstance().getReference().child("service");
-        query.orderByChild("id").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        query.orderByChild("uid").equalTo(this.uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -137,7 +125,7 @@ public class HomeActivity extends AppCompatActivity
                     Service value = snapshot.getValue(Service.class);
                     listofDataService.add(value);
                     my_services_rv.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-                    adapterGetService = new AdapterGetService(HomeActivity.this ,listofDataService,1);
+                    adapterGetService = new AdapterGetService(HomeActivity.this ,listofDataService , 1 ,HomeActivity.this);
                     my_services_rv.setAdapter(adapterGetService);
                     adapterGetService.notifyDataSetChanged();
 
@@ -155,7 +143,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void shoewDialog() {
 
-        Dialog rateDialog = new Dialog(this);
+        final Dialog rateDialog = new Dialog(this);
         View view = LayoutInflater.from(this)
                 .inflate(R.layout.item_my_services, null);
         rateDialog.setContentView(view);
@@ -174,6 +162,9 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 puplishData(type,location,price,cost,total);
+                adapterGetService.notifyDataSetChanged();
+
+                rateDialog.cancel();
 
 
             }

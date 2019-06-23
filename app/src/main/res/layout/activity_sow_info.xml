@@ -7,4 +7,78 @@
     tools:context=".ui.SowInfoActivity" >
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_24"
+                android:layout_marginTop="@dimen/dimen_24"
+                android:layout_marginEnd="@dimen/dimen_24"
+                android:orientation="vertical">
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/show_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_34"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:inputType="text"
+                    />
+
+                <TextView
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/show_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:inputType="textEmailAddress"
+                    />
+
+                <TextView
+                    android:paddingEnd="@dimen/dimen_8"
+                    android:drawableRight="@drawable/ic_call_black_24dp"
+                    android:inputType="phone"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/show_Phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    />
+
+
+
+
+                <TextView
+                    android:paddingStart="@dimen/dimen_8"
+                    android:id="@+id/show_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_42"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:background="@drawable/edittext_rounded_corners"
+                    android:inputType="text"
+
+                    />
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

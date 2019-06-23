@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mashaweer.R;
+import com.example.mashaweer.helper.SharedPreferencesManger;
 import com.example.mashaweer.model.Service;
 import com.example.mashaweer.model.ServiceAccept;
 import com.google.firebase.database.DatabaseReference;
@@ -37,15 +38,17 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
     private DatabaseReference databaseReferance;
     private String idItem;
     private String type;
+    private Activity activity;
 
 
     // private ApiServices apiServices;
 
 
-    public AdapterGetService(Context context, List<Service> listOfService , int id) {
+    public AdapterGetService(Context context, List<Service> listOfService , int id , Activity activity) {
         this.context = context;
         this.listOfService = listOfService;
         this.id = id ;
+        this.activity = activity;
 
 
 
@@ -90,7 +93,6 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
                 pushDataIdToDatabase();
 
 
-
             }
         });
 
@@ -99,11 +101,15 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
 
     }
 
+
     private void pushDataIdToDatabase() {
         databaseReferance = FirebaseDatabase.getInstance().getReference().child("service_accept");
+        String uid2 = SharedPreferencesManger.LoadStringData(activity, "uid");
 
-        ServiceAccept notificatios = new ServiceAccept(idItem,type ,uid);
+        ServiceAccept notificatios = new ServiceAccept(idItem,type ,uid , uid2);
         databaseReferance.push().setValue(notificatios);
+
+
 
 
 
