@@ -30,6 +30,21 @@ public class SowInfoActivity extends AppCompatActivity {
         phoneTv = findViewById(R.id.show_Phone);
         mailTv = findViewById(R.id.show_Email);
 
+        getIntentData();
+
+        phoneTv.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @java.lang.Override
+            public void onClick(View view) {
+
+                onCallBtnClick();
+            }
+        });
+    }
+
+
+
+    private void getIntentData() {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
@@ -41,18 +56,6 @@ public class SowInfoActivity extends AppCompatActivity {
         nameTv.setText(name);
         addressTv.setText(address);
         phoneTv.setText(phone);
-
-
-        phoneTv.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @java.lang.Override
-            public void onClick(View view) {
-
-
-                onCallBtnClick();
-
-            }
-        });
     }
 
 

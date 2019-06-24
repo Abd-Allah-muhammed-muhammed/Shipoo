@@ -24,9 +24,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private Intent intent;
     private int user_id;
-    private boolean loginTrue ;
+    private boolean loginTrue;
     private Button loginBtn;
-    private EditText email , pass;
+    private EditText email, pass;
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginBtn = findViewById(R.id.login_button);
-        email =findViewById(R.id.id_email);
-        pass =findViewById(R.id.idpass);
+        email = findViewById(R.id.id_email);
+        pass = findViewById(R.id.idpass);
 
 
         // OneSignal Initialization
@@ -44,10 +44,12 @@ public class LoginActivity extends AppCompatActivity {
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
 
+
+
         loginTrue = false;
         mAuth = FirebaseAuth.getInstance();
 
-         user_id = getIntent().getIntExtra("user_id", 0);
+        user_id = getIntent().getIntExtra("user_id", 0);
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             String uid = user.getUid();
 
-                            OneSignal.sendTag("uid",uid);
-                            SharedPreferencesManger.SaveData(LoginActivity.this,"uid",uid);
+                            OneSignal.sendTag("uid", uid);
+                            SharedPreferencesManger.SaveData(LoginActivity.this, "uid", uid);
 
 
                             if (user_id == 1) {

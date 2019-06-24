@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,13 +63,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         getCities();
         databaseReferance = FirebaseDatabase.getInstance().getReference().child("users");
-
-
-
-
-
-
-
 
         singUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             String uid = user.getUid();
 
+                            OneSignal.sendTag("uid", uid);
                             SharedPreferencesManger.SaveData(SignUpActivity.this,"uid",uid);
 
                             String maileT = email.getText().toString();

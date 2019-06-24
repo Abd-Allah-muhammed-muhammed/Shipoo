@@ -26,11 +26,9 @@ import java.util.List;
 
 public class Notification2Activity extends AppCompatActivity {
 
-    private DatabaseReference databaseReferance;
     private List<ServiceAccept> listOfData = new ArrayList<>();
     private RecyclerView get_infoService_rv;
     private AdapterAplayAcceptNoti adapterAplayAcceptNoti;
-    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,15 @@ public class Notification2Activity extends AppCompatActivity {
         get_infoService_rv = findViewById(R.id.notification2_rv);
 
 
-        uid = SharedPreferencesManger.LoadStringData(this, "uid");
+      String  uid = SharedPreferencesManger.LoadStringData(this, "uid");
+
+      getNotifications(uid);
+
+
+
+    }
+
+    private void getNotifications(String uid) {
 
         Query query = FirebaseDatabase.getInstance().getReference().child("service_aplay");
 
@@ -51,11 +57,11 @@ public class Notification2Activity extends AppCompatActivity {
 
                     ServiceAccept value = snapshot.getValue(ServiceAccept.class);
 
-                        listOfData.add(value);
-                        get_infoService_rv.setLayoutManager(new LinearLayoutManager(Notification2Activity.this));
-                        adapterAplayAcceptNoti =  new AdapterAplayAcceptNoti(Notification2Activity.this ,listOfData ,Notification2Activity.this);
-                        get_infoService_rv.setAdapter(adapterAplayAcceptNoti);
-                        adapterAplayAcceptNoti.notifyDataSetChanged();
+                    listOfData.add(value);
+                    get_infoService_rv.setLayoutManager(new LinearLayoutManager(Notification2Activity.this));
+                    adapterAplayAcceptNoti =  new AdapterAplayAcceptNoti(Notification2Activity.this ,listOfData ,Notification2Activity.this);
+                    get_infoService_rv.setAdapter(adapterAplayAcceptNoti);
+                    adapterAplayAcceptNoti.notifyDataSetChanged();
 
 
 
@@ -70,6 +76,5 @@ public class Notification2Activity extends AppCompatActivity {
 
             }
         });
-
     }
 }

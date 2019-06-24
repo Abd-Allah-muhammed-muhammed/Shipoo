@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.onesignal.OneSignal;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -59,8 +60,8 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference databaseReferance;
     private String uid;
     private int requestcode = 1;
-    private List <Service> listofDataService = new ArrayList<>();
-    private RecyclerView  my_services_rv ;
+    private List<Service> listofDataService = new ArrayList<>();
+    private RecyclerView my_services_rv;
     private AdapterGetService adapterGetService;
     private String token;
 
@@ -71,8 +72,14 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         btnNotification = findViewById(R.id.notification_btn_home);
-        toolbarType =findViewById(R.id.toolbar_type_home);
+        toolbarType = findViewById(R.id.toolbar_type_home);
         my_services_rv = findViewById(R.id.my_services_rv);
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
 
         setSupportActionBar(toolbar);
@@ -82,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
 
         token = FirebaseInstanceId.getInstance().getToken();
 
-         uid = SharedPreferencesManger.LoadStringData(HomeActivity.this, "uid");
+        uid = SharedPreferencesManger.LoadStringData(HomeActivity.this, "uid");
 
         toolbarType.setText("My Services");
 
@@ -92,14 +99,13 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 toolbarType.setText("Add Service");
-              shoewDialog();
+                shoewDialog();
 
-              //add service data to firebase with uid user
+                //add service data to firebase with uid user
 
 
             }
         });
-
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -114,7 +120,6 @@ public class HomeActivity extends AppCompatActivity
     private void getMyservice() {
 
 
-
         Query query = FirebaseDatabase.getInstance().getReference().child("service");
         query.orderByChild("uid").equalTo(this.uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -125,7 +130,7 @@ public class HomeActivity extends AppCompatActivity
                     Service value = snapshot.getValue(Service.class);
                     listofDataService.add(value);
                     my_services_rv.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-                    adapterGetService = new AdapterGetService(HomeActivity.this ,listofDataService , 1 ,HomeActivity.this);
+                    adapterGetService = new AdapterGetService(HomeActivity.this, listofDataService, 1, HomeActivity.this);
                     my_services_rv.setAdapter(adapterGetService);
                     adapterGetService.notifyDataSetChanged();
 
@@ -148,9 +153,9 @@ public class HomeActivity extends AppCompatActivity
                 .inflate(R.layout.item_my_services, null);
         rateDialog.setContentView(view);
 
-            rateDialog.show();
+        rateDialog.show();
 
-       final Button puplish = view.findViewById(R.id.puplish_btn);
+        final Button puplish = view.findViewById(R.id.puplish_btn);
         final EditText type = view.findViewById(R.id.type);
         final EditText location = view.findViewById(R.id.location);
         final EditText price = view.findViewById(R.id.price);
@@ -161,7 +166,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                puplishData(type,location,price,cost,total);
+                puplishData(type, location, price, cost, total);
                 adapterGetService.notifyDataSetChanged();
 
                 rateDialog.cancel();
@@ -172,8 +177,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void puplishData(EditText typeEt, EditText locationEt, EditText priceEt, EditText costEt, TextView totalEt) {
-
-
 
 
         String type = typeEt.getText().toString();
@@ -188,7 +191,7 @@ public class HomeActivity extends AppCompatActivity
         databaseReferance = FirebaseDatabase.getInstance().getReference().child("service");
 
         String uniqueID = UUID.randomUUID().toString();
-        Service serviceData = new Service(uid,location,price,cost,type,total,token, uniqueID);
+        Service serviceData = new Service(uid, location, price, cost, type, total, token, uniqueID);
         databaseReferance.push().setValue(serviceData);
 
     }
@@ -235,7 +238,7 @@ public class HomeActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.notificatin_nav) {
 
-            intent = new Intent(HomeActivity.this , NotificationActivity.class);
+            intent = new Intent(HomeActivity.this, NotificationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
@@ -254,13 +257,11 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-
-
     private void checkPermissions() {
 
         if (ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(HomeActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, requestcode);
+                == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestcode);
         }
 
     }
@@ -268,9 +269,9 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if (grantResults.length>1&&requestCode==requestcode){
+        if (grantResults.length > 1 && requestCode == requestcode) {
 
-        }else {
+        } else {
             checkPermissions();
         }
     }

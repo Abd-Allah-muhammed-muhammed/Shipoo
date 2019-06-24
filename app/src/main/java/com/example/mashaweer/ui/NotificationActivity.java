@@ -33,7 +33,6 @@ public class NotificationActivity extends AppCompatActivity {
     private List<ServiceAccept> listofDataService = new ArrayList<>();
     private RecyclerView get_infoService_rv;
     private AdapterNotificatios adapterNotificatios;
-    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,18 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
         get_infoService_rv = findViewById(R.id.notification_rv);
 
-         uid = SharedPreferencesManger.LoadStringData(this, "uid");
+
+String uid = SharedPreferencesManger.LoadStringData(this, "uid");
+
+getnotifications(uid);
+
+
+
+
+    }
+
+    private void getnotifications(final String uid) {
+
 
         Query query = FirebaseDatabase.getInstance().getReference().child("service_accept");
 
@@ -79,8 +89,5 @@ public class NotificationActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

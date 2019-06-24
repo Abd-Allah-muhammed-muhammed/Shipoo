@@ -37,6 +37,7 @@
                     />
 
                 <TextView
+                    android:gravity="center"
                     android:paddingStart="@dimen/dimen_8"
                     android:id="@+id/show_Email"
                     android:layout_width="match_parent"
@@ -47,6 +48,7 @@
                     />
 
                 <TextView
+                    android:gravity="center"
                     android:paddingEnd="@dimen/dimen_8"
                     android:drawableRight="@drawable/ic_call_black_24dp"
                     android:inputType="phone"
@@ -62,6 +64,7 @@
 
 
                 <TextView
+                    android:gravity="center"
                     android:paddingStart="@dimen/dimen_8"
                     android:id="@+id/show_address"
                     android:layout_width="match_parent"

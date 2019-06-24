@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -61,6 +62,14 @@ public class SecondHomeActivity extends AppCompatActivity
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbarType.setText("Get Services");
+
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
 
         getMyservice();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

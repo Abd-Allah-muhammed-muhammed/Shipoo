@@ -118,8 +118,6 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
     private void pushNotifications() {
 
 
-
-
              AsyncTask.execute(new Runnable() {
                  @Override
                  public void run() {
