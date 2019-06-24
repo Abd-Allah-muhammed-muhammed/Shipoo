@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "5093398486",
+    "firebase_url": "https://shipping-fda1f.firebaseio.com",
+    "project_id": "shipping-fda1f",
+    "storage_bucket": "shipping-fda1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5093398486:android:d3dfe6d082393a7e",
+        "android_client_info": {
+          "package_name": "com.example.mashaweer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5093398486-16eam01q0gucgu9rdniib57t5l5o73j4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mashaweer",
+            "certificate_hash": "ab395e82d659545bc8002c67cd842b8bc8a2daf0"
+          }
+        },
+        {
+          "client_id": "5093398486-7olgf39f5b4isu3fecr769bcfptg3869.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkwJzjQWkchRCS-LxZa3Msj1L2nm7wAQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5093398486-7olgf39f5b4isu3fecr769bcfptg3869.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
