@@ -24,7 +24,6 @@ public class AddServiceActivity extends AppCompatActivity {
     EditText cost ,price,location , type;
     Button puplish ;
 
-    TextView total;
     private DatabaseReference databaseReferance;
     private String uid;
     private String token;
@@ -39,7 +38,6 @@ public class AddServiceActivity extends AppCompatActivity {
         location  = findViewById(R.id.location);
         price  =findViewById(R.id.price);
         cost = findViewById(R.id.cost);
-        total  =findViewById(R.id.total);
         token = FirebaseInstanceId.getInstance().getToken();
 
         uid = SharedPreferencesManger.LoadStringData(AddServiceActivity.this, "uid");
@@ -47,7 +45,7 @@ public class AddServiceActivity extends AppCompatActivity {
         puplish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                puplishData(type,location,price,cost,total);
+                puplishData(type,location,price,cost);
             }
         });
 
@@ -60,7 +58,7 @@ public class AddServiceActivity extends AppCompatActivity {
 
 
 
-    private void puplishData(EditText typeEt, EditText locationEt, EditText priceEt, EditText costEt, TextView totalEt) {
+    private void puplishData(EditText typeEt, EditText locationEt, EditText priceEt, EditText costEt) {
 
 
         String type = typeEt.getText().toString();

@@ -10,9 +10,11 @@ import android.os.Bundle;
 import com.example.mashaweer.R;
 import com.example.mashaweer.adapter.AdapterAplayAcceptNoti;
 import com.example.mashaweer.helper.SharedPreferencesManger;
+import com.example.mashaweer.model.AplayAcscept;
 import com.example.mashaweer.model.ServiceAccept;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class Notification2Activity extends AppCompatActivity {
 
-    private List<ServiceAccept> listOfData = new ArrayList<>();
+    private List<AplayAcscept> listOfData = new ArrayList<>();
     private RecyclerView get_infoService_rv;
     private AdapterAplayAcceptNoti adapterAplayAcceptNoti;
 
@@ -33,25 +35,25 @@ public class Notification2Activity extends AppCompatActivity {
         get_infoService_rv = findViewById(R.id.notification2_rv);
 
 
-      String  uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
-      getNotifications(uid);
+      getNotifications();
 
 
 
     }
 
-    private void getNotifications(String uid) {
+    private void getNotifications() {
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("service_aplay");
+        DatabaseReference deal = FirebaseDatabase.getInstance().getReference().child("deal");
 
-        query.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+       deal. addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                    ServiceAccept value = snapshot.getValue(ServiceAccept.class);
+                    AplayAcscept value = snapshot.getValue(AplayAcscept.class);
+
 
                     listOfData.add(value);
                     get_infoService_rv.setLayoutManager(new LinearLayoutManager(Notification2Activity.this));

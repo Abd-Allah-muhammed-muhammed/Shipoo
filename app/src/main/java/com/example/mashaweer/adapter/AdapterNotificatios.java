@@ -87,7 +87,7 @@ public class AdapterNotificatios extends RecyclerView.Adapter<AdapterNotificatio
             public void onClick(View view) {
 
                 pushnotification();
-                pushAcceptItem();
+                pushtDeal();
 
                 final Query query = FirebaseDatabase.getInstance().getReference().child("users");
                 query.orderByChild("uid").equalTo(uid2).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -141,9 +141,9 @@ public class AdapterNotificatios extends RecyclerView.Adapter<AdapterNotificatio
 
     }
 
-    private void pushAcceptItem() {
+    private void pushtDeal() {
 
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("AcceptItem");
+        databaseReferance = FirebaseDatabase.getInstance().getReference().child("deal");
         AplayAcscept serviceAccept = new AplayAcscept(idItem,uid);
         databaseReferance.push().setValue(serviceAccept);
 

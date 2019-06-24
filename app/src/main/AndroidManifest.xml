@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddServiceActivity"></activity>
+        <activity android:name=".ui.SplashActivity"></activity>
+        <activity android:name=".AddServiceActivity" />
         <activity android:name=".ui.SowInfoActivity2" />
         <activity android:name=".ui.SowInfoActivity" />
         <activity android:name=".ui.Notification2Activity" />
@@ -32,7 +33,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SignUpActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.StartSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

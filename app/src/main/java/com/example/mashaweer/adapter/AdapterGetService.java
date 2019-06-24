@@ -82,11 +82,12 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
         viewHolder.cost.setText(cost);
         viewHolder.loction.setText(location);
         viewHolder.price.setText(price);
-        viewHolder.total.setText(total);
         viewHolder.aplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  idItem = data.getId();
+
+                 SharedPreferencesManger.SaveData(activity,"idItem",idItem);
 
                 pushNotifications();
 
@@ -103,13 +104,11 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
 
 
     private void pushDataIdToDatabase() {
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("service_accept");
+        databaseReferance = FirebaseDatabase.getInstance().getReference().child("service_aplay");
         String uid2 = SharedPreferencesManger.LoadStringData(activity, "uid");
 
         ServiceAccept notificatios = new ServiceAccept(idItem,type ,uid , uid2);
         databaseReferance.push().setValue(notificatios);
-
-
 
 
 
@@ -200,7 +199,6 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
         public TextView loction;
         public TextView price;
         public TextView cost;
-        public TextView total;
         public Button aplay;
 
         public ViewHolder(@NonNull View itemView) {
@@ -209,7 +207,6 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
             loction =  itemView.findViewById(R.id.location2);
             price =  itemView.findViewById(R.id.price2);
             cost =  itemView.findViewById(R.id.cost2);
-            total =  itemView.findViewById(R.id.total2);
             aplay =  itemView.findViewById(R.id.aply_btn);
 
         }

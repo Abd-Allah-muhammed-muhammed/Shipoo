@@ -53,7 +53,7 @@ getnotifications(uid);
     private void getnotifications(final String uid) {
 
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("service_accept");
+        Query query = FirebaseDatabase.getInstance().getReference().child("service_aplay");
 
         query.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @java.lang.Override

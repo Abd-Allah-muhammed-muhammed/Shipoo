@@ -34,7 +34,7 @@ import java.util.List;
 public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcceptNoti.ViewHolder> {
 
     Context context;
-    List<ServiceAccept> listOfnotifications = new ArrayList<>();
+    List<AplayAcscept> listOfnotifications = new ArrayList<>();
     Activity activity;
     private DatabaseReference databaseReferance;
 
@@ -42,7 +42,7 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
     // private ApiServices apiServices;
 
 
-    public AdapterAplayAcceptNoti(Context context, List<ServiceAccept> listOfnotifications, Activity activity) {
+    public AdapterAplayAcceptNoti(Context context, List<AplayAcscept> listOfnotifications, Activity activity) {
         this.context = context;
         this.listOfnotifications = listOfnotifications;
         this.activity = activity;
@@ -61,7 +61,10 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
-        final ServiceAccept data = listOfnotifications.get(i);
+        final AplayAcscept data = listOfnotifications.get(i);
+
+
+
 
         String idItem = data.getIdItem();
         Query query2 = FirebaseDatabase.getInstance().getReference().child("service");
@@ -87,7 +90,7 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
             @java.lang.Override
             public void onClick(View view) {
 
-                String uid = data.getUid();
+                String uid = data.getUidAccept();
                 Query query = FirebaseDatabase.getInstance().getReference().child("users");
 
                 query.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
