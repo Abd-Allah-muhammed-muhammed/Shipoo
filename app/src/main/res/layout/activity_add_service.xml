@@ -23,7 +23,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/edittext_rounded_corners"
                 android:gravity="center"
-                android:text="" />
+                 />
 
             <EditText
                 android:id="@+id/location"
@@ -32,7 +32,7 @@
                 android:layout_marginTop="@dimen/dimen_8"
                 android:background="@drawable/edittext_rounded_corners"
                 android:gravity="center"
-                android:text="" />
+                />
 
             <EditText
                 android:id="@+id/price"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="@dimen/dimen_8"
                 android:background="@drawable/edittext_rounded_corners"
                 android:gravity="center"
-                android:text="" />
+                />
 
             <EditText
                 android:id="@+id/cost"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="@dimen/dimen_8"
                 android:background="@drawable/edittext_rounded_corners"
                 android:gravity="center"
-                android:text="" />
+                 />
 
         </LinearLayout>
 
@@ -105,51 +105,51 @@
 
     </LinearLayout>
 
-        <RelativeLayout
+    <RelativeLayout
 
-            android:id="@+id/layout_total"
-            android:layout_width="match_parent"
+        android:id="@+id/layout_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout"
+        android:layout_alignEnd="@+id/layout"
+        android:layout_marginTop="@dimen/dimen_24"
+        android:background="@drawable/edittext_rounded_corners">
+
+        <TextView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout"
-            android:layout_alignEnd="@+id/layout"
-            android:layout_marginTop="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="-8dp"
-                android:paddingEnd="@dimen/dimen_24"
-                android:text="المجموع :"
-                android:id="@+id/totel_s"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="133dp"
-                android:layout_toStartOf="@+id/totel_s"
-                android:gravity="center"
-                android:paddingEnd="@dimen/dimen_24"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
-
-        <Button
-            android:layout_margin="@dimen/dimen_42"
-            android:id="@+id/puplish_btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
-            android:layout_below="@+id/layout_total"
-            android:layout_marginTop="@dimen/dimen_8"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-8dp"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text="المجموع :"
+            android:id="@+id/totel_s"
             android:textColor="@color/black"
-            android:background="@drawable/edittext_rounded_corners2"
-            android:text="Puplish" />
-    </LinearLayout>
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="133dp"
+            android:layout_toStartOf="@+id/totel_s"
+            android:gravity="center"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_margin="@dimen/dimen_42"
+        android:id="@+id/puplish_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:layout_below="@+id/layout_total"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:textColor="@color/black"
+        android:background="@drawable/edittext_rounded_corners2"
+        android:text="Puplish" />
+</LinearLayout>
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.example.mashaweer.AddServiceActivity;
 import com.example.mashaweer.R;
 import com.example.mashaweer.adapter.AdapterGetService;
 import com.example.mashaweer.helper.SharedPreferencesManger;
@@ -63,7 +64,6 @@ public class HomeActivity extends AppCompatActivity
     private List<Service> listofDataService = new ArrayList<>();
     private RecyclerView my_services_rv;
     private AdapterGetService adapterGetService;
-    private String token;
 
 
     @Override
@@ -87,7 +87,6 @@ public class HomeActivity extends AppCompatActivity
 
         checkPermissions();
 
-        token = FirebaseInstanceId.getInstance().getToken();
 
         uid = SharedPreferencesManger.LoadStringData(HomeActivity.this, "uid");
 
@@ -99,8 +98,10 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 toolbarType.setText("Add Service");
-                shoewDialog();
 
+
+                intent = new Intent(HomeActivity.this, AddServiceActivity.class);
+                startActivity(intent);
                 //add service data to firebase with uid user
 
 
@@ -146,55 +147,7 @@ public class HomeActivity extends AppCompatActivity
         });
     }
 
-    private void shoewDialog() {
 
-        final Dialog rateDialog = new Dialog(this);
-        View view = LayoutInflater.from(this)
-                .inflate(R.layout.item_my_services, null);
-        rateDialog.setContentView(view);
-
-        rateDialog.show();
-
-        final Button puplish = view.findViewById(R.id.puplish_btn);
-        final EditText type = view.findViewById(R.id.type);
-        final EditText location = view.findViewById(R.id.location);
-        final EditText price = view.findViewById(R.id.price);
-        final EditText cost = view.findViewById(R.id.cost);
-        final TextView total = view.findViewById(R.id.total);
-
-        puplish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                puplishData(type, location, price, cost, total);
-                adapterGetService.notifyDataSetChanged();
-
-                rateDialog.cancel();
-
-
-            }
-        });
-    }
-
-    private void puplishData(EditText typeEt, EditText locationEt, EditText priceEt, EditText costEt, TextView totalEt) {
-
-
-        String type = typeEt.getText().toString();
-        String location = locationEt.getText().toString();
-        String price = priceEt.getText().toString();
-        String cost = costEt.getText().toString();
-        int price_ = Integer.parseInt(price);
-        int cost_ = Integer.parseInt(cost);
-        String total = String.valueOf(price_ + cost_);
-
-
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("service");
-
-        String uniqueID = UUID.randomUUID().toString();
-        Service serviceData = new Service(uid, location, price, cost, type, total, token, uniqueID);
-        databaseReferance.push().setValue(serviceData);
-
-    }
 
     @Override
     public void onBackPressed() {

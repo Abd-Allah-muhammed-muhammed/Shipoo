@@ -17,9 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SowInfoActivity2"></activity>
-
-
+        <activity android:name=".AddServiceActivity"></activity>
+        <activity android:name=".ui.SowInfoActivity2" />
         <activity android:name=".ui.SowInfoActivity" />
         <activity android:name=".ui.Notification2Activity" />
         <activity android:name=".ui.NotificationActivity" />
@@ -40,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
     </application>
 
 </manifest>
