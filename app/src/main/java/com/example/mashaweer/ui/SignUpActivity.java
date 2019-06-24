@@ -103,6 +103,7 @@ public class SignUpActivity extends AppCompatActivity {
                 number = "+2"+phone.getText().toString();
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(number, 60, TimeUnit.SECONDS, SignUpActivity.this, mCallbacks);
 
+
             }
         });
 
@@ -117,12 +118,16 @@ public class SignUpActivity extends AppCompatActivity {
                 // 2 - Auto-retrieval. On some devices Google Play services can automatically
                 //     detect the incoming verification SMS and perform verification without
                 //     user action.
-                Log.d("11", "onVerificationCompleted:" + credential);
+
+                String smsCode = credential.getSmsCode();
+              //  chickCode(smsCode);
                 // [START_EXCLUDE silent]
                 // [END_EXCLUDE]
 
                 signInWithPhoneAuthCredential(credential);
             }
+
+
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
@@ -151,7 +156,8 @@ public class SignUpActivity extends AppCompatActivity {
                 // The SMS verification code has been sent to the provided phone number, we
                 // now need to ask the user to enter the code and then construct a credential
                 // by combining the code with a verification ID.
-                Log.d("11", "onCodeSent:" + verificationId);
+
+
 
                 // Save verification ID and resending token so we can use them later
                 mVerificationId = verificationId;
@@ -162,18 +168,35 @@ public class SignUpActivity extends AppCompatActivity {
         // [END phone_auth_callbacks]
     }
 
+//    private void chickCode(String smsCode) {
+//
+//        String code = verificationCode.getText().toString();
+//
+//        if (smsCode.equals(code)){
+//
+//
+//            singupp();
+//        }
+//    }
+//
+//    private void singupp() {
+//
+//
+//    }
 
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+    private void signInWithPhoneAuthCredential(final PhoneAuthCredential credential) {
+
+
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("11", "signInWithCredential:success");
 
                             FirebaseUser user = task.getResult().getUser();
+
                             String uid = user.getUid();
 
                         } else {
@@ -240,6 +263,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void singUp() {
+
 
 
 
