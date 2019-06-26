@@ -16,10 +16,25 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
 
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
 
+    </style>
+
+
+
+
+
+    <style name="mytoast">
+        <item name="stTextColor">#fff</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">@color/colorPrimary</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_check_black_24dp</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">5dp</item>
     </style>
 
 </resources>

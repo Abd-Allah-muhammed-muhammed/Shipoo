@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.mashaweer.R;
 import com.example.mashaweer.adapter.AdapterGetService;
 import com.example.mashaweer.model.Service;
+import com.example.mashaweer.ui.profile.ProfileActifity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -49,6 +50,7 @@ public class SecondHomeActivity extends AppCompatActivity
     private List<Service> listofDataService = new ArrayList<>();
     private RecyclerView get_service_rv ;
     private AdapterGetService adapterGetService;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,9 @@ public class SecondHomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+
+        Intent intent = new Intent(SecondHomeActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -119,7 +124,12 @@ public class SecondHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.profile2) {
+
+            intent = new Intent(SecondHomeActivity.this, ProfileActifity.class);
+
+            intent.putExtra("user_id",2);
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.notificatin_nav2) {
             Intent intent = new Intent(SecondHomeActivity.this,Notification2Activity.class);

@@ -65,7 +65,6 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
 
 
 
-
         String idItem = data.getIdItem();
         Query query2 = FirebaseDatabase.getInstance().getReference().child("service");
         query2.orderByChild("id").equalTo(idItem).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -106,12 +105,16 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
                             String name = value.getName();
                             String address = value.getAddress();
                             String phone = value.getPhone();
+                            String mUid = value.getUid();
+
 
                             Intent intent = new Intent(context, SowInfoActivity2.class);
                             intent.putExtra("name", name);
                             intent.putExtra("address", address);
                             intent.putExtra("mail", mail);
                             intent.putExtra("phone", phone);
+                            intent.putExtra("uid", mUid);
+
                             activity.startActivity(intent);
 
                         }
@@ -142,7 +145,7 @@ public class AdapterAplayAcceptNoti extends RecyclerView.Adapter<AdapterAplayAcc
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titel = itemView.findViewById(R.id.agree_2);
+            titel = itemView.findViewById(R.id.agree_);
 
 
         }

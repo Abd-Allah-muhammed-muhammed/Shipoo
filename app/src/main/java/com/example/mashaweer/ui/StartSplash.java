@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.Menu;
 
 import com.example.mashaweer.R;
+import com.onesignal.OneSignal;
 
 public class StartSplash extends AppCompatActivity {
 
@@ -18,6 +19,11 @@ public class StartSplash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_splash);
 
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
 
         new Handler().postDelayed(new Runnable(){

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.example.mashaweer.R;
 public class SowInfoActivity2 extends AppCompatActivity {
     TextView nameTv, addressTv, phoneTv, mailTv;
     private String phone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,11 @@ public class SowInfoActivity2 extends AppCompatActivity {
         mailTv = findViewById(R.id.show_Email2);
 
 
+
         getIntentData();
+
+
+
 
 
         phoneTv.setOnClickListener(new View.OnClickListener() {
@@ -100,5 +106,12 @@ public class SowInfoActivity2 extends AppCompatActivity {
         }else{
             Toast.makeText(this, "You don't assign permission.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(SowInfoActivity2.this,SecondHomeActivity.class);
+
+        startActivity(intent);
     }
 }

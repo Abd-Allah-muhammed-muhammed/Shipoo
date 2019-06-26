@@ -35,6 +35,16 @@
                 />
 
             <EditText
+                android:id="@+id/location_dlever"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:background="@drawable/filde"
+                android:gravity="center"
+                />
+
+
+            <EditText
                 android:id="@+id/price"
                 android:layout_width="250dp"
                 android:layout_height="48dp"
@@ -65,7 +75,7 @@
                 android:layout_width="120dp"
                 android:layout_height="48dp"
                 android:gravity="center"
-                android:text="نوع الخدمه :"
+                android:text="نوع المتنج :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -75,7 +85,16 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/dimen_8"
                 android:gravity="center"
-                android:text="مكان توصيلها :"
+                android:text="مكان الاستلام :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+            <TextView
+                android:lines="1"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:gravity="center"
+                android:text="مكان التوصيل :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -85,7 +104,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/dimen_8"
                 android:gravity="center"
-                android:text="سعر الاوردر :"
+                android:text="سعر المتج :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -106,12 +125,13 @@
 
 
     <Button
+        android:background="@drawable/courn_edt"
         android:id="@+id/puplish_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_42"
         android:layout_margin="@dimen/dimen_42"
-        android:background="@drawable/edittext_rounded_corners2"
         android:text="Puplish"
-        android:textColor="@color/black" />
+
+        android:textColor="@color/white" />
 </LinearLayout>
 

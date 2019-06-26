@@ -33,6 +33,14 @@
                 android:background="@drawable/filde"
                 android:gravity="center"
                 />
+            <TextView
+                android:id="@+id/location_dlever2"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:background="@drawable/filde"
+                android:gravity="center"
+                />
 
             <TextView
                 android:id="@+id/price2"
@@ -55,7 +63,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -64,7 +72,7 @@
                 android:layout_width="120dp"
                 android:layout_height="48dp"
                 android:gravity="center"
-                android:text="الخدمة"
+                android:text="نوع المنتج"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -73,7 +81,17 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/dimen_8"
                 android:gravity="center"
-                android:text="المكان:"
+                android:text="مكان الاستلام:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:gravity="center"
+                android:text="مكان التوصيل:"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -82,7 +100,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/dimen_8"
                 android:gravity="center"
-                android:text="السعر :"
+                android:text="سعر المنتج :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -105,19 +123,19 @@
 
     <Button
         android:layout_marginStart="48dp"
-    android:layout_marginEnd="140dp"
+    android:layout_marginEnd="48dp"
         android:id="@+id/aply_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_42"
         android:layout_marginTop="@dimen/dimen_8"
         android:textColor="@color/white"
-        android:background="#CE3C79"
+        android:background="@drawable/courn_edt"
         android:text="aplay" />
 
 
     <View
         android:layout_marginTop="@dimen/dimen_8"
         android:layout_width="match_parent"
-        android:background="#CE3C79"
+        android:background="#F9A825"
         android:layout_height="1dp"/>
 </LinearLayout>

@@ -10,8 +10,16 @@ public class Singup {
     private String repass;
     private String mail;
     private String uid;
-    private String idCity ;
     private String token;
+    private float rotate;
+
+    public float getRotate() {
+        return rotate;
+    }
+
+    public void setRotate(float rotate) {
+        this.rotate = rotate;
+    }
 
     public String getToken() {
         return token;
@@ -77,7 +85,7 @@ public class Singup {
         this.uid = uid;
     }
 
-    public Singup(String name, String phone, String address, String pass, String repass, String mail, String uid , String idCity ,String token) {
+    public Singup(String name, String phone, String address, String pass, String repass, String mail, String uid , String token ,float rotate) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -85,17 +93,10 @@ public class Singup {
         this.repass = repass;
         this.mail = mail;
         this.uid = uid;
-        this.idCity = idCity;
         this.token = token;
+        this.rotate = rotate;
     }
 
-    public String getIdCity() {
-        return idCity;
-    }
-
-    public void setIdCity(String idCity) {
-        this.idCity = idCity;
-    }
 
     public Singup() {
     }

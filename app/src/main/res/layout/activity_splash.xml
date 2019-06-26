@@ -1,43 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/in"
+    android:background="@color/white"
     tools:context=".ui.SplashActivity">
 
 
+    <RelativeLayout
 
-    <Button
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:background="@drawable/curv">
+
+
+        <TextView
+            android:id="@+id/shippo"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_42"
+            android:background="@drawable/shopoapp"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/round"
+            android:layout_width="@dimen/_100"
+            android:layout_height="@dimen/_100"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/round_sh"
+            android:src="@drawable/logo" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_chose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="80dp"
-        android:textSize="18sp"
         android:gravity="center"
-        android:textColor="@color/black"
-        android:text="اضافة طلب"
-        android:id="@+id/add_service"
-        android:background="@drawable/bg_btn"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:orientation="horizontal">
 
 
+        <Button
+            android:id="@+id/get_service"
+            android:layout_width="@dimen/_150"
+            android:layout_height="@dimen/_100"
+            android:layout_marginEnd="@dimen/dimen_24"
+            android:background="@drawable/round_splaah"
+            android:text="مندوب"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
 
-    <Button
-        android:textSize="18sp"
+        <Button
+            android:id="@+id/add_service"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:layout_width="@dimen/_150"
+            android:text="بائع"
+            android:layout_height="@dimen/_100"
+            android:layout_marginStart="@dimen/dimen_24"
+            android:background="@drawable/round_splaah" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:textSize="@dimen/dimen_24"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"
-        android:textColor="@color/black"
-        android:text="تنفيذ طلب"
-        android:layout_below="@+id/add_service"
-        android:id="@+id/get_service"
-        android:background="@drawable/bg_btn"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="60dp"
+        android:text=" اختار....................."
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:layout_height="50dp"
+        android:layout_below="@+id/layout_chose"
+        android:layout_margin="@dimen/dimen_24"
+        android:background="@drawable/edittext_rounded_corners" />
+
+    <!--<Button-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_marginTop="80dp"-->
+    <!--android:textSize="18sp"-->
+    <!--android:gravity="center"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:text="اضافة طلب"-->
+    <!---->
+    <!--android:background="@drawable/bg_btn"-->
+    <!--android:layout_marginEnd="15dp"-->
+    <!--android:layout_marginStart="15dp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
+
+
+    <!--<Button-->
+    <!--android:textSize="18sp"-->
+    <!--android:gravity="center"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:text="تنفيذ طلب"-->
+    <!--android:layout_below="@+id/add_service"-->
+    <!---->
+    <!--android:background="@drawable/bg_btn"-->
+    <!--android:layout_marginEnd="15dp"-->
+    <!--android:layout_marginStart="15dp"-->
+    <!--android:layout_marginTop="60dp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="80dp" />-->
 
 
 </RelativeLayout>

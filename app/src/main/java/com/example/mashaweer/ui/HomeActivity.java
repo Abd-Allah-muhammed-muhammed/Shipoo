@@ -11,6 +11,7 @@ import com.example.mashaweer.R;
 import com.example.mashaweer.adapter.AdapterGetService;
 import com.example.mashaweer.helper.SharedPreferencesManger;
 import com.example.mashaweer.model.Service;
+import com.example.mashaweer.ui.profile.ProfileActifity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.view.LayoutInflater;
@@ -80,6 +81,9 @@ public class HomeActivity extends AppCompatActivity
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
+
+
+
 
 
         setSupportActionBar(toolbar);
@@ -187,11 +191,17 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.profile) {
+
+            intent = new Intent(HomeActivity.this, ProfileActifity.class);
+            intent.putExtra("user_id",1);
+            startActivity(intent);
+
+
         } else if (id == R.id.notificatin_nav) {
 
             intent = new Intent(HomeActivity.this, NotificationActivity.class);
+
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {

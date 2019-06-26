@@ -18,8 +18,11 @@ import com.example.mashaweer.R;
 import com.example.mashaweer.helper.SharedPreferencesManger;
 import com.example.mashaweer.model.Service;
 import com.example.mashaweer.model.ServiceAccept;
+import com.example.mashaweer.ui.LoginActivity;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.OutputStream;
 
@@ -70,13 +73,16 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
         String location = data.getLocation();
         String price = data.getPrice();
           type = data.getType();
-        String total = data.getTotal();
+        String locationDeleverd = data.getLocationDeleverd();
+        viewHolder.loctopnDeleverd.setText(locationDeleverd);
          uid = data.getUid();
 
         if (this.id ==1){
 
              viewHolder.aplay.setVisibility(View.GONE);
          }
+
+
 
         viewHolder.type.setText(type);
         viewHolder.cost.setText(cost);
@@ -94,6 +100,8 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
                 pushDataIdToDatabase();
 
 
+                // set Dialog
+
             }
         });
 
@@ -108,7 +116,14 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
         String uid2 = SharedPreferencesManger.LoadStringData(activity, "uid");
 
         ServiceAccept notificatios = new ServiceAccept(idItem,type ,uid , uid2);
-        databaseReferance.push().setValue(notificatios);
+        databaseReferance.push().setValue(notificatios).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                StyleableToast.makeText(context, "تم ارسال الطلب", Toast.LENGTH_LONG, R.style.mytoast).show();
+
+            }
+        });
 
 
 
@@ -140,11 +155,11 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
                              con.setDoInput(true);
 
                              con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                             con.setRequestProperty("Authorization", "Basic MjI2MTJhZmItMDY4ZS00MTNiLWIzNGQtOTY2M2RiMjNlZjU2");
+                             con.setRequestProperty("Authorization", "Basic N2FiYjVlZDctMzliNS00ZThlLWE5ZWMtYjQ1ZDAwY2VjNzM3");
                              con.setRequestMethod("POST");
 
                              String strJsonBody = "{"
-                                     + "\"app_id\": \"e4d96c09-94af-4a8c-86a4-13347fd78173\","
+                                     + "\"app_id\": \"dccdb512-bdbb-4950-a714-95d1599b1ce3\","
 
                                      + "\"filters\": [{\"field\": \"tag\", \"key\": \"uid\", \"relation\": \"=\", \"value\": \"" + send_uid + "\"}],"
 
@@ -200,6 +215,7 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
         public TextView price;
         public TextView cost;
         public Button aplay;
+        public TextView loctopnDeleverd ;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -208,6 +224,7 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
             price =  itemView.findViewById(R.id.price2);
             cost =  itemView.findViewById(R.id.cost2);
             aplay =  itemView.findViewById(R.id.aply_btn);
+            loctopnDeleverd =  itemView.findViewById(R.id.location_dlever2);
 
         }
     }

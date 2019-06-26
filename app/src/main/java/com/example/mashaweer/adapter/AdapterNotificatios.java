@@ -136,8 +136,29 @@ public class AdapterNotificatios extends RecyclerView.Adapter<AdapterNotificatio
             @Override
             public void onClick(View view) {
 
+                deletItem();
             }
         });
+
+    }
+
+    private void deletItem() {
+        Query query = FirebaseDatabase.getInstance().getReference().child("service_aplay");
+        query.orderByChild("idItem").equalTo(idItem).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                    appleSnapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
@@ -175,11 +196,11 @@ public class AdapterNotificatios extends RecyclerView.Adapter<AdapterNotificatio
                             con.setDoInput(true);
 
                             con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                            con.setRequestProperty("Authorization", "Basic MjI2MTJhZmItMDY4ZS00MTNiLWIzNGQtOTY2M2RiMjNlZjU2");
+                            con.setRequestProperty("Authorization", "Basic N2FiYjVlZDctMzliNS00ZThlLWE5ZWMtYjQ1ZDAwY2VjNzM3");
                             con.setRequestMethod("POST");
 
                             String strJsonBody = "{"
-                                    + "\"app_id\": \"e4d96c09-94af-4a8c-86a4-13347fd78173\","
+                                    + "\"app_id\": \"dccdb512-bdbb-4950-a714-95d1599b1ce3\","
 
                                     + "\"filters\": [{\"field\": \"tag\", \"key\": \"uid\", \"relation\": \"=\", \"value\": \"" + send_uid + "\"}],"
 

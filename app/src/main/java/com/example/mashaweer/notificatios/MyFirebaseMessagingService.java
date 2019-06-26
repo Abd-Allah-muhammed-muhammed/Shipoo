@@ -1,8 +1,11 @@
 package com.example.mashaweer.notificatios;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -13,13 +16,16 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.example.mashaweer.R;
+import com.example.mashaweer.ui.HomeActivity;
+import com.example.mashaweer.ui.NotificationActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Random;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-
+    // Sets an ID for the notification
+    int mNotificationId = 001;
     private NotificationManager notificationManager;
     private static final String ADMIN_CHANNEL_ID = "admin_channel";
 
@@ -48,7 +54,24 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri);
 
-        notificationManager.notify(notificationId, notificationBuilder.build());
+
+        // Create pending intent, mention the Activity which needs to be
+        //triggered when user clicks on notification(StopScript.class in this case)
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, NotificationActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        notificationBuilder.setContentIntent(contentIntent);
+
+
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotificationManager =
+                (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        // Builds the notification and issues it.
+        mNotificationManager.notify(mNotificationId, notificationBuilder.build());
 
     }
 

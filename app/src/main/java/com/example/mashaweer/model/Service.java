@@ -2,19 +2,27 @@ package com.example.mashaweer.model;
 
 public class Service {
 
-    String  uid , location , price , cost  , type ,total ,token;
+    String  uid , location ,locationDeleverd , price , cost  , type  ,token;
     String id ;
 
-    public Service(String uid , String location, String price, String cost , String type ,String total , String token , String id ) {
+    public Service(String uid , String location, String price, String cost , String type   , String token , String id  , String locationDeleverd) {
         this.uid = uid;
 
         this.location = location;
         this.price = price;
         this.cost = cost;
         this.type = type;
-        this.total=total;
         this.token = token;
         this.id = id ;
+        this.locationDeleverd= locationDeleverd;
+    }
+
+    public String getLocationDeleverd() {
+        return locationDeleverd;
+    }
+
+    public void setLocationDeleverd(String locationDeleverd) {
+        this.locationDeleverd = locationDeleverd;
     }
 
     public String getId() {
@@ -40,13 +48,7 @@ public class Service {
         return type;
     }
 
-    public String getTotal() {
-        return total;
-    }
 
-    public void setTotal(String total) {
-        this.total = total;
-    }
 
     public void setType(String type) {
         this.type = type;

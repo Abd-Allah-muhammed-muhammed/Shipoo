@@ -32,23 +32,29 @@
 
 
         <Button
+            android:paddingLeft="@dimen/dimen_24"
+            android:drawableLeft="@drawable/ic_close_black_24dp"
+            android:layout_marginStart="@dimen/dimen_24"
+       android:layout_marginEnd="@dimen/dimen_24"
             android:id="@+id/dont_agree"
             android:textStyle="bold"
             android:textSize="22sp"
             android:textColor="@color/white"
             android:text="لا اوافق"
-            android:layout_margin="@dimen/dimen_8"
             android:background="@drawable/button_bg_no"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <Button
+            android:paddingLeft="@dimen/dimen_24"
+            android:drawableLeft="@drawable/ic_check_black_24dp"
+            android:layout_marginStart="@dimen/dimen_24"
+            android:layout_marginEnd="@dimen/dimen_24"
             android:id="@+id/agree"
             android:text="موافق"
             android:textStyle="bold"
             android:textSize="22sp"
             android:textColor="@color/white"
-            android:layout_margin="@dimen/dimen_8"
             android:background="@drawable/button_bg_ok"
             android:layout_weight="1"
             android:layout_width="0dp"
