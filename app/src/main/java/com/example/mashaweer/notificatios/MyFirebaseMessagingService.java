@@ -37,7 +37,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onNewToken(String s) {
         super.onNewToken(s);
      //   KeyManager.setSharedPreferenceString(getApplicationContext(), "fcm_token", s);
-        Log.e(TAG, "onNewToken: " + s);
+        Log.e("", "onNewToken: " + s);
     }
 
     @Override
