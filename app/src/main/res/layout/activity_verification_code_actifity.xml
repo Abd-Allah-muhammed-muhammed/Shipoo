@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    tools:context=".ui.sing_up.VerificationCodeActifity">
+
+
+
+
+    <LinearLayout
+    android:layout_centerInParent="true"
+        android:id="@+id/layout_chick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/verification_code_et"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/dimen_24"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:layout_marginEnd="@dimen/dimen_24"
+            android:background="@drawable/edittext_rounded_corners"
+            android:gravity="center"
+            android:hint="ادخل كود التفعيل" />
+
+
+        <Button
+            android:id="@+id/getVerificationCode_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_100"
+            android:layout_marginTop="@dimen/dimen_24"
+            android:layout_marginEnd="@dimen/_100"
+            android:text="تحقق من الكود"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_finish"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/layout_chick"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+        android:paddingStart="@dimen/dimen_8"
+        android:id="@+id/ID_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:layout_marginTop="@dimen/dimen_24"
+        android:background="@drawable/edittext_rounded_corners"
+        android:hint="@string/client_register_home_et"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+            android:layout_marginEnd="@dimen/dimen_24"
+            android:layout_marginStart="@dimen/dimen_24"
+        />
+
+        <EditText
+        android:paddingStart="@dimen/dimen_8"
+        android:id="@+id/ID_Password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:layout_marginTop="@dimen/dimen_24"
+            android:layout_marginEnd="@dimen/dimen_24"
+            android:layout_marginStart="@dimen/dimen_24"
+
+        android:background="@drawable/edittext_rounded_corners"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textAlignment="viewStart"
+        />
+
+        <EditText
+            android:layout_marginEnd="@dimen/dimen_24"
+            android:layout_marginStart="@dimen/dimen_24"
+        android:paddingStart="@dimen/dimen_8"
+        android:id="@+id/ID_RePassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_42"
+        android:layout_marginTop="@dimen/dimen_24"
+        android:background="@drawable/edittext_rounded_corners"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:textAlignment="viewStart"/>
+
+
+        <Button
+            android:id="@+id/finish_sing_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="تسجيل الدخول"
+            android:layout_marginStart="@dimen/_100"
+            android:layout_marginTop="@dimen/dimen_24"
+            android:layout_marginEnd="@dimen/_100"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>
