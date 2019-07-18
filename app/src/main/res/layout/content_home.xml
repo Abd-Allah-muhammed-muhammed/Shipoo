@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.HomeActivity"
+    tools:context=".ui.home.HomeActivity"
+
     android:background="@color/white"
+
     tools:showIn="@layout/app_bar_home">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_services_rv"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

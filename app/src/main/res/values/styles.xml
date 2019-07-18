@@ -24,7 +24,11 @@
     </style>
 
 
-
+    <style name="EditText.Grey" parent="@style/AppTheme">
+        <item name="colorControlActivated">@color/grey_60</item>
+        <item name="colorControlHighlight">@color/grey_60</item>
+        <item name="colorControlNormal">@color/grey_40</item>
+    </style>
 
 
     <style name="mytoast">
@@ -33,7 +37,8 @@
         <item name="stColorBackground">@color/colorPrimary</item>
         <item name="stSolidBackground">true</item>
         <item name="stIconStart">@drawable/ic_check_black_24dp</item>
-        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stLength">LONG</item>
+        LONG or SHORT
         <item name="stRadius">5dp</item>
     </style>
 

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,22 +17,20 @@ import com.example.mashaweer.R;
 import com.example.mashaweer.helper.MessageListener;
 import com.example.mashaweer.helper.MessageReceiver;
 import com.example.mashaweer.helper.SharedPreferencesManger;
-import com.example.mashaweer.model.Singup;
-import com.example.mashaweer.ui.HomeActivity;
-import com.example.mashaweer.ui.SecondHomeActivity;
+import com.example.mashaweer.model.Users;
+import com.example.mashaweer.ui.home.HomeActivity;
+import com.example.mashaweer.ui.home.SecondHomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.onesignal.OneSignal;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -48,11 +45,12 @@ public class VerificationCodeActifity extends AppCompatActivity implements Messa
     private String mail_  , phone_  ,name_  ,address_  ;
     private String token;
     private DatabaseReference databaseReferance;
-    private String uid;
+
 
     LinearLayout layout_finish , layout_chick;
     private SweetAlertDialog pDialog;
     private Handler handler;
+    private int id_user_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +120,7 @@ public class VerificationCodeActifity extends AppCompatActivity implements Messa
         thread.start();
 
 
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("users");
+        databaseReferance = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
 
@@ -138,37 +136,44 @@ public class VerificationCodeActifity extends AppCompatActivity implements Messa
         pDialog.setCancelable(false);
         pDialog.show();
 
-        SharedPreferencesManger.SaveData(VerificationCodeActifity.this,"uid",uid);
+        SharedPreferencesManger.SaveData(VerificationCodeActifity.this, "token", token);
 
         String addressT = address.getText().toString();
         String passT = pass.getText().toString();
         String repass = confirmPass.getText().toString();
 
+        if (passT.equals(repass)) {
 
-        Singup singup = new Singup(name_,phone_,addressT,passT,repass,mail_,uid ,token ,0);
 
-        databaseReferance.push().setValue(singup).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                OneSignal.sendTag("uid", uid);
-                Toast.makeText(VerificationCodeActifity.this, "تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show();
-                pDialog.cancel();
+            Users users = new Users(name_, phone_, addressT, passT, repass, mail_,  token, 0, id_user_type);
+
+            databaseReferance.push().setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(VerificationCodeActifity.this, "تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show();
+                    pDialog.cancel();
+                }
+            });
+
+
+            if (id_user_type == 1) {
+
+
+                SharedPreferencesManger.SaveData(VerificationCodeActifity.this,"token",token);
+                Intent intent = new Intent(VerificationCodeActifity.this, HomeActivity.class);
+                startActivity(intent);
+            } else {
+
+                SharedPreferencesManger.SaveData(VerificationCodeActifity.this,"token",token);
+
+                Intent intent = new Intent(VerificationCodeActifity.this, SecondHomeActivity.class);
+                startActivity(intent);
             }
-        });
 
+        }else {
 
-
-
-        if (user_id == 1) {
-
-            Intent intent = new Intent(VerificationCodeActifity.this, HomeActivity.class);
-            startActivity(intent);
-        } else {
-
-            Intent intent = new Intent(VerificationCodeActifity.this, SecondHomeActivity.class);
-            startActivity(intent);
+            confirmPass.setError("كلمة السر غير متطابقة");
         }
-
     }
 
 
@@ -198,6 +203,8 @@ public class VerificationCodeActifity extends AppCompatActivity implements Messa
         mail_ = intent.getStringExtra("mail");
         user_id = intent.getIntExtra("user_id", 0);
         mVerificationId = intent.getStringExtra("verificatioId");
+        id_user_type = intent.getIntExtra("id_user_type",0);
+        SharedPreferencesManger.SaveData(VerificationCodeActifity.this,"id",id_user_type);
 
 
 
@@ -216,8 +223,7 @@ public class VerificationCodeActifity extends AppCompatActivity implements Messa
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
 
-                            FirebaseUser user = task.getResult().getUser();
-                             uid = user.getUid();
+
 
                              pDialog.cancel();
                             layout_chick.setVisibility(View.GONE);

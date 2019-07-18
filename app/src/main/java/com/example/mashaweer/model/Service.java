@@ -2,27 +2,54 @@ package com.example.mashaweer.model;
 
 public class Service {
 
-    String  uid , location ,locationDeleverd , price , cost  , type  ,token;
+    String  from ,to , price , cost  , type  ,token  , time;
     String id ;
+    boolean spacial;
 
-    public Service(String uid , String location, String price, String cost , String type   , String token , String id  , String locationDeleverd) {
-        this.uid = uid;
+    public String getFrom() {
+        return from;
+    }
 
-        this.location = location;
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public Service( String from, String price, String cost , String type   , String token , String id  , String to , boolean spacial , String time) {
+
+
+        this.from = from;
         this.price = price;
         this.cost = cost;
         this.type = type;
         this.token = token;
         this.id = id ;
-        this.locationDeleverd= locationDeleverd;
+        this.to= to;
+        this.spacial=spacial;
+        this.time = time;
     }
 
-    public String getLocationDeleverd() {
-        return locationDeleverd;
+    public boolean isSpacial() {
+        return spacial;
     }
 
-    public void setLocationDeleverd(String locationDeleverd) {
-        this.locationDeleverd = locationDeleverd;
+    public void setSpacial(boolean spacial) {
+        this.spacial = spacial;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getId() {
@@ -54,25 +81,7 @@ public class Service {
         this.type = type;
     }
 
-    public String getUid() {
-        return uid;
-    }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-
-
-
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public String getPrice() {
         return price;

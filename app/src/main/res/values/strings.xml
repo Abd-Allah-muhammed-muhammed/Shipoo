@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Mashaweer</string>
+    <string name="app_name">ٍShipoo</string>
     <string name="client_register_name_et">name</string>
     <string name="client_register_mail_et">mail</string>
     <string name="client_register_phone_et">phone</string>
     <string name="client_register_home_et">address</string>
     <string name="password">password</string>
-    <string name="confirm_password">confirm password</string>
+    <string name="confirm_password">تاكيد الرقم السري</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -21,4 +21,15 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_second_home">SecondHomeActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="notifications">الاشعارات</string>
+    <string name="my_info">معلوماتي</string>
+    <string name="share_app">مشاركة التطبيق</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="mandoop">معلومات المندوبين</string>
+    <string name="users">معلومات الزبائن</string>
 </resources>

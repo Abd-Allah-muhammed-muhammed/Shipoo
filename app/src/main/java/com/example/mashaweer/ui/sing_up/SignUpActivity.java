@@ -1,11 +1,15 @@
 package com.example.mashaweer.ui.sing_up;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,18 +32,16 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private int user_id;
-    private FirebaseAuth mAuth;
-
     EditText email , phone , name   ;
 
-//
     Button singUp  ;
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
     private String number;
     private SweetAlertDialog pDialog;
+    private int id_user_type;
+    private int SEND_SMS_CODE = 100;
 
 
     @Override
@@ -48,29 +50,16 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         email = findViewById(R.id.ID_Email);
-//
+
         phone = findViewById(R.id.ID_Phone);
-//
+
         singUp = findViewById(R.id.btn_Register);
-//
+
         name = findViewById(R.id.ID_Name);
-         user_id = getIntent().getIntExtra("user_id",0);
 
           pDialog = new SweetAlertDialog(this);
-//
 
-//
-//        Thread thread = new Thread() {
-//            @Override
-//            public void run() {
-//
-//
-//            }
-//
-//        };
-//
-//        thread.start();
-//
+showDialogId();
 
 
 
@@ -78,6 +67,12 @@ public class SignUpActivity extends AppCompatActivity {
         singUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (id_user_type!=1&&id_user_type!=2){
+
+                    showDialogId();
+                }
+
 
                 if (email.getText().toString().matches("")){
 
@@ -112,7 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential credential) {
                 // This callback will be invoked in two situations:
-                // 1 - Instant verification. In some cases the phone number can be instantly
+                // a1 - Instant verification. In some cases the phone number can be instantly
                 //     verified without needing to send or enter a verification code.
                 // 2 - Auto-retrieval. On some devices Google Play services can automatically
                 //     detect the incoming verification SMS and perform verification without
@@ -126,15 +121,21 @@ public class SignUpActivity extends AppCompatActivity {
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
                 Log.w("11", "onVerificationFailed", e);
+                phone.setError(e.getMessage());
+                pDialog.cancel();
                 // [START_EXCLUDE silent]
                 // [END_EXCLUDE]
 
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                    phone.setError(e.getMessage());
+                    pDialog.cancel();
                     // Invalid request
                     // [START_EXCLUDE]
 
                     // [END_EXCLUDE]
                 } else if (e instanceof FirebaseTooManyRequestsException) {
+                    pDialog.cancel();
+
                     // The SMS quota for the project has been exceeded
                     // [START_EXCLUDE]
                     Snackbar.make(findViewById(android.R.id.content), "Quota exceeded.",
@@ -154,11 +155,13 @@ public class SignUpActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(SignUpActivity.this,VerificationCodeActifity.class);
 
-                intent.putExtra("number" , number);
+                intent.putExtra("number" , phone.getText().toString().trim());
                 intent.putExtra("name" , name.getText().toString());
-                intent.putExtra("user_id",user_id);
                 intent.putExtra("mail",email.getText().toString());
                 intent.putExtra("verificatioId",mVerificationId);
+                intent.putExtra("id_user_type",id_user_type);
+
+                checkPermission();
 
                 pDialog.cancel();
                 startActivity(intent);
@@ -172,11 +175,62 @@ public class SignUpActivity extends AppCompatActivity {
         // [END phone_auth_callbacks]
     }
 
+    private void checkPermission() {
+
+        //Requesting permission
+
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS)) {
+                //If the user has denied the permission previously your code will come to this block
+                //Here you can explain why you need this permission
+                //Explain here why you need this permission
+            }
+
+            //And finally ask for the permission
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_SMS },
+                    SEND_SMS_CODE);
+
+
+    }
+
+    private void showDialogId() {
+
+        final Dialog idDialog = new Dialog(this);
+        View view = LayoutInflater.from(this)
+                .inflate(R.layout.id_user_dialog, null);
+        idDialog.setContentView(view);
+        idDialog.show();
+
+
+        final Button add_1 = view.findViewById(R.id.add_service);
+
+        final Button get_2 = view.findViewById(R.id.get_service);
+
+        add_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                id_user_type = 1;
+                idDialog.cancel();
+            }
+        });
+
+        get_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                id_user_type = 2 ;
+
+                idDialog.cancel();
+            }
+        });
+
+    }
+
 
     private void verificationCode() {
 
 
-        number = "+2"+phone.getText().toString();
+        number = "+2"+phone.getText().toString().trim();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(number, 60, TimeUnit.SECONDS, SignUpActivity.this, mCallbacks);
 
     }

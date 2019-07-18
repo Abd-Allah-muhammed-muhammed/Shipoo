@@ -3,17 +3,13 @@ package com.example.mashaweer.ui.profile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 
 import com.example.mashaweer.R;
 import com.example.mashaweer.helper.SharedPreferencesManger;
-import com.example.mashaweer.model.Singup;
-import com.example.mashaweer.ui.SowInfoActivity2;
+import com.example.mashaweer.model.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,10 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActifity extends AppCompatActivity {
 
-    private String uid;
+    private String token;
 
     EditText mName  , mAddress , mEmail , mPhone , mPass , mRepass ;
-    RatingBar  ratingBar ;
     Button edit_btn;
     private int user_id;
 
@@ -40,20 +35,10 @@ public class ProfileActifity extends AppCompatActivity {
         mPhone = findViewById(R.id.profile_phone);
         mPass = findViewById(R.id.profile_pass);
         mRepass = findViewById(R.id.profile_re_pass);
-        ratingBar = findViewById(R.id.rating_bar);
-         uid = SharedPreferencesManger.LoadStringData(ProfileActifity.this, "uid");
-         user_id = getIntent().getIntExtra("user_id", 0);
+         token = SharedPreferencesManger.LoadStringData(ProfileActifity.this, "token");
 
-
-        if (user_id== 1 ){
-
-            ratingBar.setVisibility(View.GONE);
-
-
-        }
-
-        Query query = FirebaseDatabase.getInstance().getReference().child("users");
-        query.orderByChild("uid").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = FirebaseDatabase.getInstance().getReference().child("Users");
+        query.orderByChild("token").equalTo(token).addListenerForSingleValueEvent(new ValueEventListener() {
             @java.lang.Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -61,7 +46,7 @@ public class ProfileActifity extends AppCompatActivity {
                 ) {
 
 
-                    Singup value = snapshot.getValue(Singup.class);
+                    Users value = snapshot.getValue(Users.class);
                     String mail = value.getMail();
                     String name = value.getName();
                     String address = value.getAddress();
@@ -76,7 +61,6 @@ public class ProfileActifity extends AppCompatActivity {
                     mPhone.setText(phone);
                     mPass.setText(pass);
                     mRepass.setText(repass);
-                    ratingBar.setRating(rotate);
 
 
 

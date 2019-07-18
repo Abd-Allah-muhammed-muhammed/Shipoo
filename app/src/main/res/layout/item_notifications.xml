@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginStart="@dimen/_4sdp"
+    android:background="@drawable/back_text"
+    android:orientation="vertical">
 
     <TextView
-
-        android:layout_marginEnd="@dimen/dimen_8"
-        android:layout_marginStart="@dimen/dimen_8"
-        android:layout_marginTop="@dimen/dimen_8"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:background="@drawable/text_bg_whit"
+        android:textStyle="bold"
         android:id="@+id/titel_noti"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_42"
-        android:text="هناك طلب موافقه لطلبك "
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/dimen_8"
+        android:fontFamily="@font/cour"
         android:gravity="center"
-        />
+        android:paddingStart="@dimen/dimen_8"
+        android:text="تم الموافقه علي طلبك من قبل مندوب"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_9ssp" />
 
 
     <LinearLayout
-        android:layout_marginTop="@dimen/dimen_8"
-        android:layout_below="@+id/titel_noti"
-        android:orientation="horizontal"
-        android:id="@+id/layout_noti"
+        android:id="@+id/layout_noti_"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titel_noti"
+        android:gravity="center"
+        android:orientation="horizontal">
 
 
         <Button
-            android:paddingLeft="@dimen/dimen_24"
-            android:drawableLeft="@drawable/ic_close_black_24dp"
-            android:layout_marginStart="@dimen/dimen_24"
-       android:layout_marginEnd="@dimen/dimen_24"
+            android:textStyle="bold"
             android:id="@+id/dont_agree"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            android:textColor="@color/white"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:background="@drawable/back_text_left"
+            android:fontFamily="@font/cour"
             android:text="لا اوافق"
-            android:background="@drawable/button_bg_no"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/_10ssp" />
+
+
         <Button
-            android:paddingLeft="@dimen/dimen_24"
-            android:drawableLeft="@drawable/ic_check_black_24dp"
-            android:layout_marginStart="@dimen/dimen_24"
-            android:layout_marginEnd="@dimen/dimen_24"
-            android:id="@+id/agree"
-            android:text="موافق"
             android:textStyle="bold"
-            android:textSize="22sp"
+            android:id="@+id/agree"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:background="@drawable/back_text_right"
+            android:fontFamily="@font/cour"
+            android:text="موافق"
             android:textColor="@color/white"
-            android:background="@drawable/button_bg_ok"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/_10ssp" />
+
 
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/show_Info_"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/layout_noti_"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:background="@drawable/back_btn"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:text="عرض المعلومات"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

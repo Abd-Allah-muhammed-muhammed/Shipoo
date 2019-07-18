@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
+
     tools:context=".ui.profile.ProfileActifity">
 
 
@@ -13,95 +15,114 @@
         android:orientation="vertical">
 
 
-        <RatingBar
-
-            android:id="@+id/rating_bar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dimen_8"
-            android:numStars="5"
-
-            />
-
-
         <EditText
+            android:fontFamily="@font/cour"
+
             android:id="@+id/profile_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="الاسم"
+
             android:inputType="text"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:drawablePadding="@dimen/dimen_8"
             android:paddingStart="@dimen/dimen_8"
             android:paddingEnd="@dimen/dimen_8" />
 
         <EditText
+            android:fontFamily="@font/cour"
+
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:id="@+id/profile_mail"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="البريد الالكتروني"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/dimen_8"
+            android:drawablePadding="@dimen/dimen_8"
             android:paddingEnd="@dimen/dimen_8" />
 
         <EditText
+            android:fontFamily="@font/cour"
+
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:drawablePadding="@dimen/dimen_8"
             android:id="@+id/profile_phone"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="الهاتف"
             android:inputType="phone"
             android:paddingStart="@dimen/dimen_8"
             android:paddingEnd="@dimen/dimen_8" />
 
         <EditText
+            android:fontFamily="@font/cour"
 
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:id="@+id/profile_address"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="العنوان"
             android:inputType="text"
             android:paddingStart="@dimen/dimen_8"
             android:paddingEnd="@dimen/dimen_8" />
 
         <EditText
+            android:fontFamily="@font/cour"
 
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:id="@+id/profile_pass"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="الرقم السري"
             android:inputType="text"
             android:paddingStart="@dimen/dimen_8"
             android:paddingEnd="@dimen/dimen_8" />
 
         <EditText
+            android:fontFamily="@font/cour"
+
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
 android:paddingEnd="@dimen/dimen_8"
             android:id="@+id/profile_re_pass"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_42"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
-            android:background="@drawable/edittext_rounded_corners"
+            android:background="@drawable/courn_edt"
             android:hint="تاكيد الرقم السري"
             android:inputType="text"
             android:paddingStart="@dimen/dimen_8" />
@@ -111,15 +132,17 @@ android:paddingEnd="@dimen/dimen_8"
 
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/profile_edit_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_38sdp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_24"
         android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_24"
         android:layout_marginBottom="@dimen/dimen_24"
-        android:background="@drawable/courn_edt"
+        android:background="@drawable/back_btn"
+        android:fontFamily="@font/cour"
         android:text=" تعديل البانات"
         android:textColor="@color/white"
         android:textStyle="bold" />

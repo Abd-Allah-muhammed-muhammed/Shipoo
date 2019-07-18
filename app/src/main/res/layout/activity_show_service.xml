@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/_10sdp">
+
+
+    <TextView
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/type_sh"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/back_text"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_9ssp" />
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/location_dlever_sh"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/type_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/back_text" />
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+        android:inputType="number"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/cost_sh"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/location_dlever_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/back_text" />
+
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/location_sh"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/cost_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/back_text" />
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+        android:inputType="number"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:id="@+id/price_sh"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/location_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/back_text" />
+
+
+    <Button
+        android:fontFamily="@font/cour"
+        android:id="@+id/Show_service_puplish_btn"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/price_sh"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/courn_edt"
+        android:text="ارسال طلب"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/type_sh"
+        android:background="@drawable/back_text_right"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:text="نوع المنتج"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/type_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/location_dlever_sh"
+        android:background="@drawable/back_text_right"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:paddingEnd="@dimen/_4sdp"
+        android:text="مكان التوصيل "
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/location_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/cost_sh"
+        android:background="@drawable/back_text_right"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:paddingEnd="@dimen/_4sdp"
+        android:text="تكلفة الخدمة"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/cost_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/price_sh"
+        android:background="@drawable/back_text_right"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:paddingEnd="@dimen/_4sdp"
+        android:text="مكان الاستلام"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:textSize="@dimen/_9ssp"
+
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/location_dlever_sh"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/price_sh"
+        android:background="@drawable/back_text_right"
+        android:fontFamily="@font/cour"
+        android:gravity="center"
+        android:paddingEnd="@dimen/_4sdp"
+        android:text="قيمة الخدمة"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>
+
+
+
+

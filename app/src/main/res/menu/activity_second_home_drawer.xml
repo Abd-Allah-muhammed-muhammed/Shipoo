@@ -7,32 +7,30 @@
         <item
             android:id="@+id/profile2"
             android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="تعديل البيانات" />
+            android:title="معلوماتي" />
         <item
             android:id="@+id/notificatin_nav2"
             android:icon="@drawable/ic_notifications"
             android:title="notifications" />
+
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+
+            android:id="@+id/info_mandoop_nav2"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="@string/users" />
+
     </group>
 
-    <item android:title="Communicate">
-        <menu>
+
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:title="مشاركة التطبيق" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+                android:icon="@drawable/ic_log_out"
+                android:title="تسجيل الخروج" />
+
 
 </menu>

@@ -2,55 +2,40 @@ package com.example.mashaweer.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.os.StrictMode;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mashaweer.R;
+import com.example.mashaweer.ui.service.ShowServiceActivity;
 import com.example.mashaweer.helper.SharedPreferencesManger;
 import com.example.mashaweer.model.Service;
-import com.example.mashaweer.model.ServiceAccept;
-import com.example.mashaweer.ui.LoginActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.muddzdev.styleabletoast.StyleableToast;
 
-import java.io.OutputStream;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.ViewHolder> {
 
     Context context;
-    List<Service> listOfService = new ArrayList<>();
-    private String uid;
-    private  int id ;
-    private DatabaseReference databaseReferance;
-    private String idItem;
-    private String type;
+    List<Service> listOfService ;
+
+
     private Activity activity;
+    private boolean clickd  = true ;
+    private String token;
 
 
     // private ApiServices apiServices;
 
 
-    public AdapterGetService(Context context, List<Service> listOfService , int id , Activity activity) {
+    public AdapterGetService(Context context, List<Service> listOfService , Activity activity) {
         this.context = context;
         this.listOfService = listOfService;
-        this.id = id ;
         this.activity = activity;
 
 
@@ -66,138 +51,63 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  ViewHolder viewHolder,  int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+
+
 
          final Service data = listOfService.get(i);
-        String cost = data.getCost();
-        String location = data.getLocation();
-        String price = data.getPrice();
-          type = data.getType();
-        String locationDeleverd = data.getLocationDeleverd();
-        viewHolder.loctopnDeleverd.setText(locationDeleverd);
-         uid = data.getUid();
+        final String cost = data.getCost();
+        final String from = data.getFrom();
+        final String price = data.getPrice();
+        String time = data.getTime();
+        viewHolder.time.setText(time);
+       String type = data.getType();
+        final String to = data.getTo();
+         token = data.getToken();
 
-        if (this.id ==1){
-
-             viewHolder.aplay.setVisibility(View.GONE);
-         }
+        activity.registerForContextMenu(viewHolder.edit);
 
 
+        if (data.isSpacial()){
+
+            viewHolder.special.setVisibility(View.VISIBLE);
+        }else {
+            viewHolder.special.setVisibility(View.GONE);
+        }
 
         viewHolder.type.setText(type);
         viewHolder.cost.setText(cost);
-        viewHolder.loction.setText(location);
-        viewHolder.price.setText(price);
-        viewHolder.aplay.setOnClickListener(new View.OnClickListener() {
+        viewHolder.from.setText(from);
+
+
+        viewHolder.show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 idItem = data.getId();
-
-                 SharedPreferencesManger.SaveData(activity,"idItem",idItem);
-
-                pushNotifications();
-
-                pushDataIdToDatabase();
 
 
-                // set Dialog
+                String id = data.getId();
 
+                SharedPreferencesManger.SaveData(activity, "idItem", id);
+
+                Intent intent = new Intent(context, ShowServiceActivity.class);
+
+                intent.putExtra("type", type);
+                intent.putExtra("cost", cost);
+                intent.putExtra("from", from);
+                intent.putExtra("price", price);
+                intent.putExtra("to", to);
+                intent.putExtra("idItem", id);
+                intent.putExtra("token", token);
+                intent.putExtra("user_id", 2);
+                activity.startActivity(intent);
             }
         });
-
-
 
 
     }
 
 
-    private void pushDataIdToDatabase() {
-        databaseReferance = FirebaseDatabase.getInstance().getReference().child("service_aplay");
-        String uid2 = SharedPreferencesManger.LoadStringData(activity, "uid");
 
-        ServiceAccept notificatios = new ServiceAccept(idItem,type ,uid , uid2);
-        databaseReferance.push().setValue(notificatios).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-                StyleableToast.makeText(context, "تم ارسال الطلب", Toast.LENGTH_LONG, R.style.mytoast).show();
-
-            }
-        });
-
-
-
-    }
-
-    private void pushNotifications() {
-
-
-             AsyncTask.execute(new Runnable() {
-                 @Override
-                 public void run() {
-                     int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                     if (SDK_INT > 8) {
-                         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                                 .permitAll().build();
-                         StrictMode.setThreadPolicy(policy);
-                         String send_uid;
-
-                         //This is a Simple Logic to Send Notification different Device Programmatically....
-                         send_uid = uid ;
-
-                         try {
-                             String jsonResponse;
-
-                             URL url = new URL("https://onesignal.com/api/v1/notifications");
-                             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                             con.setUseCaches(false);
-                             con.setDoOutput(true);
-                             con.setDoInput(true);
-
-                             con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                             con.setRequestProperty("Authorization", "Basic N2FiYjVlZDctMzliNS00ZThlLWE5ZWMtYjQ1ZDAwY2VjNzM3");
-                             con.setRequestMethod("POST");
-
-                             String strJsonBody = "{"
-                                     + "\"app_id\": \"dccdb512-bdbb-4950-a714-95d1599b1ce3\","
-
-                                     + "\"filters\": [{\"field\": \"tag\", \"key\": \"uid\", \"relation\": \"=\", \"value\": \"" + send_uid + "\"}],"
-
-                                     + "\"data\": {\"foo\": \"bar\"},"
-                                     + "\"contents\": {\"en\": \"you have accept to your service\"}"
-                                     + "}";
-
-
-                             System.out.println("strJsonBody:\n" + strJsonBody);
-
-                             byte[] sendBytes = strJsonBody.getBytes("UTF-8");
-                             con.setFixedLengthStreamingMode(sendBytes.length);
-
-                             OutputStream outputStream = con.getOutputStream();
-                             outputStream.write(sendBytes);
-
-                             int httpResponse = con.getResponseCode();
-                             System.out.println("httpResponse: " + httpResponse);
-
-                             if (httpResponse >= HttpURLConnection.HTTP_OK
-                                     && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
-                                 Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
-                                 jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                                 scanner.close();
-                             } else {
-                                 Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
-                                 jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                                 scanner.close();
-                             }
-                             System.out.println("jsonResponse:\n" + jsonResponse);
-
-                         } catch (Throwable t) {
-                             t.printStackTrace();
-                         }
-                     }
-                 }
-             });
-         }
 
 
 
@@ -211,21 +121,29 @@ public class AdapterGetService extends RecyclerView.Adapter<AdapterGetService.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView type;
-        public TextView loction;
-        public TextView price;
+        public TextView from;
         public TextView cost;
-        public Button aplay;
-        public TextView loctopnDeleverd ;
+        public Button show;
+        public TextView  special  , time   , edit;
+
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             type =  itemView.findViewById(R.id.type2);
-            loction =  itemView.findViewById(R.id.location2);
-            price =  itemView.findViewById(R.id.price2);
+            from =  itemView.findViewById(R.id.location2);
             cost =  itemView.findViewById(R.id.cost2);
-            aplay =  itemView.findViewById(R.id.aply_btn);
-            loctopnDeleverd =  itemView.findViewById(R.id.location_dlever2);
+            show =  itemView.findViewById(R.id.show_service);
+            special = itemView.findViewById(R.id.special);
+            time = itemView.findViewById(R.id.time);
+            edit =itemView.findViewById(R.id.edit);
+
 
         }
+
+
+
+
     }
 }

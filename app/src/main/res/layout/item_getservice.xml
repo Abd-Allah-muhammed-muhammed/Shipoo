@@ -1,141 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_24"
-        android:orientation="horizontal">
+        android:layout_margin="@dimen/_4sdp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_8"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/type2"
-                android:layout_width="250dp"
-                android:layout_height="48dp"
-                android:background="@drawable/filde"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:id="@+id/location2"
-                android:layout_width="250dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:background="@drawable/filde"
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/location_dlever2"
-                android:layout_width="250dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:background="@drawable/filde"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:id="@+id/price2"
-                android:layout_width="250dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:background="@drawable/filde"
-                android:gravity="center"
-                 />
-
-            <TextView
-                android:id="@+id/cost2"
-                android:layout_width="250dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:background="@drawable/filde"
-                android:gravity="center"
-                 />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrain_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
 
             <TextView
+                android:id="@+id/special"
                 android:layout_width="120dp"
-                android:layout_height="48dp"
+                android:layout_height="22dp"
+                android:layout_gravity="start"
+                android:layout_margin="@dimen/dimen_8"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/courn_edt"
                 android:gravity="center"
-                android:text="نوع المنتج"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:text="طلب مستعجل"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
+
 
             <TextView
-                android:layout_width="120dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:gravity="center"
-                android:text="مكان الاستلام:"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:id="@+id/time"
+                android:layout_width="221dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:drawableStart="@drawable/ic_access_time_black_24dp"
+                android:drawablePadding="@dimen/dimen_8"
+                android:gravity="end"
+                android:inputType="datetime"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="2dp"
+                android:paddingEnd="@dimen/dimen_42"
+                app:layout_constraintEnd_toStartOf="@+id/edit"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/special"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
 
             <TextView
-                android:layout_width="120dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:gravity="center"
-                android:text="مكان التوصيل:"
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="..."
                 android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:gravity="center"
-                android:text="سعر المنتج :"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/dimen_8"
-                android:gravity="center"
-
-                android:text="تكلفة الخدمة:"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-        </LinearLayout>
+                android:textSize="20sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:ignore="MissingConstraints" />
 
 
-    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/type2"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/constrain_lay"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/back_text"
+            android:fontFamily="@font/cour"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9ssp" />
+
+        <TextView
+            android:id="@+id/location2"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/type2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/back_text"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_9ssp" />
+
+        <TextView
+            android:id="@+id/cost2"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/location2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/back_text"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_9ssp" />
+
+
+        <Button
+            android:id="@+id/show_service"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/cost2"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/courn_edt"
+            android:fontFamily="@font/cour"
+            android:text="عرض الخدمة"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/constrain_lay"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/type2"
+            android:background="@drawable/back_text_right"
+            android:fontFamily="@font/cour"
+            android:gravity="center"
+            android:text="نوع المنتج"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp" />
+
+        <TextView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/type2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/location2"
+            android:background="@drawable/back_text_right"
+            android:fontFamily="@font/cour"
+            android:gravity="center"
+            android:paddingEnd="@dimen/_4sdp"
+            android:text="مكان التوصيل "
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp" />
+
+
+        <TextView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/location2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/cost2"
+            android:background="@drawable/back_text_right"
+            android:fontFamily="@font/cour"
+            android:gravity="center"
+            android:paddingEnd="@dimen/_4sdp"
+            android:text="تكلفة الخدمة"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@+id/show_service"
+            android:background="@color/colorPrimaryDark" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
 
 
 
-    <Button
-        android:layout_marginStart="48dp"
-    android:layout_marginEnd="48dp"
-        android:id="@+id/aply_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_42"
-        android:layout_marginTop="@dimen/dimen_8"
-        android:textColor="@color/white"
-        android:background="@drawable/courn_edt"
-        android:text="aplay" />
 
-
-    <View
-        android:layout_marginTop="@dimen/dimen_8"
-        android:layout_width="match_parent"
-        android:background="#F9A825"
-        android:layout_height="1dp"/>
-</LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.mashaweer.notificatios;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -10,23 +9,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Build;
 import android.util.Log;
 
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.example.mashaweer.R;
-import com.example.mashaweer.ui.HomeActivity;
-import com.example.mashaweer.ui.NotificationActivity;
-import com.example.mashaweer.ui.SplashActivity;
+import com.example.mashaweer.ui.LoginActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import java.util.Random;
-
-import javax.net.ssl.KeyManager;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -36,8 +27,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String s) {
         super.onNewToken(s);
-     //   KeyManager.setSharedPreferenceString(getApplicationContext(), "fcm_token", s);
-        Log.e("", "onNewToken: " + s);
+      //  KeyManager.setSharedPreferenceString(getApplicationContext(), "fcm_token", s);
+        Log.e(TAG, "onNewToken: " + s);
     }
 
     @Override
@@ -52,7 +43,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String title, String messageBody) {
-        Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 //you can use your launcher Activity insted of SplashActivity, But if the Activity you used here is not launcher Activty than its not work when App is in background.
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //Add Any key-value to pass extras to intent
@@ -73,7 +64,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             mNotifyManager.createNotificationChannel(mChannel);
         }
-//For Android Version lower than oreo.
+//For Android Version lower than orio.
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "Seasame");
         mBuilder.setContentTitle(title)
                 .setContentText(messageBody)

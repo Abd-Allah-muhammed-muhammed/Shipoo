@@ -6,9 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -21,40 +18,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".ui.profile.ProfileActifity"></activity>
+        <activity android:name=".ui.service.SavedInfoActivity"></activity>
+        <activity
+            android:name=".ui.ItemListActivity"
+            android:label="@string/title_item_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".ui.ItemListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mashaweer.ui.ItemListActivity" />
+        </activity>
+        <activity android:name=".ui.service.ShowServiceActivity" />
+        <activity android:name=".ui.profile.ProfileActifity" />
         <activity android:name=".ui.sing_up.VerificationCodeActifity" />
-        <activity android:name=".ui.SplashActivity" />
-        <activity android:name=".AddServiceActivity" />
+        <activity android:name=".ui.service.AddServiceActivity" />
         <activity android:name=".ui.SowInfoActivity2" />
         <activity android:name=".ui.SowInfoActivity" />
-        <activity android:name=".ui.Notification2Activity" />
-        <activity android:name=".ui.NotificationActivity" />
+        <activity android:name=".ui.notifications.NotificationMandoopActivity" />
+        <activity android:name=".ui.notifications.NotificationUserActivity" />
         <activity
-            android:name=".ui.SecondHomeActivity"
+            android:name=".ui.home.SecondHomeActivity"
             android:label="@string/title_activity_second_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.sing_up.SignUpActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.StartSplash">
+        <activity android:name=".ui.splash.StartSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".helper.MessageReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-        </receiver>
-        <service android:name=".notificatios.MyFirebaseMessagingService" />
+        </receiver> <!-- <service -->
+        <!-- android:name=".notificatios.MyFirebaseMessagingService" -->
+        <!-- android:permission="com.google.android.c2dm.permission.SEND"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <service
+            android:name=".notificatios.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
 
-
+            <!-- <intent-filter> -->
+            <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
+            <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+            <!-- </intent-filter> -->
+        </service>
     </application>
 
 </manifest>
